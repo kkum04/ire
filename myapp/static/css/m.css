@@ -1,0 +1,320 @@
+@media all and (max-width:959px){
+    body{
+        font-size: 12px;
+    }
+    #wrap{
+        width: 100%;
+        overflow: hidden;
+    }
+    .container{
+        width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    /*1.header영역*/
+    #top_header,#nav_list,#top_menu{
+        display: none;
+    }
+    #logo_wrap{
+        width: 100%;
+        height: 55px;
+        position: fixed;
+        z-index: 999;
+        background-color: #fff;
+        border-bottom: 1px solid #004694;
+    }
+    #logo{
+        width: 130px;
+        height: 19px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -9.5px;
+        margin-left: -65px;
+    }
+    #logo img{
+        width: 100%;
+        height: 100%;
+    }
+    #all_btn{
+        width: 25px;
+        height: 21px;
+        position: absolute;
+        top: 50%;
+        margin-top: -10.5px;
+        right: 15px;
+    }
+    #all_btn>span{
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #555;
+        margin-bottom: 6px;
+    }
+    #all_btn>span:last-child{
+        margin-bottom: 0;
+    }
+    #m_gnb_wrap{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 998;
+        background-color: #004694;
+        display: none;
+    }
+    #m_gnb{
+        width: 100%;
+        height: 90vh;
+        background-color: #004694;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        z-index: 999;
+        overflow-y: scroll;
+    }
+    .m_gnb_dept_1{
+        overflow: auto;
+        font-size: 16px;
+        line-height: 50px;
+        border-bottom: 1px solid #fff;
+    }
+    .m_gnb_dept_1:last-child{
+        border: 0;
+    }
+    .m_gnb_dept_1>a{
+        color: #fff;
+        padding: 0 25px;
+    }
+    .m_gnb_dept_2{
+        /*display: none;*/
+        overflow: auto;
+        padding: 10px 0;
+        background-color: #f6f6f6;
+    }
+    .m_gnb_dept_2>li{
+        height: 40px;
+        line-height: 40px;
+    }
+    .m_gnb_dept_2>li>a{
+        color: #555;
+        padding: 0 25px;
+    }
+    
+    
+    
+    
+    
+    /*2.main_visual영역*/
+    #main_visual_wrap,#qprod{
+        margin-bottom: 20px;
+    }
+    #main_visual_wrap{
+        margin-top: 56px;
+        height: 156px;
+        position: relative;
+        overflow: hidden;
+    }
+    #main_visual{
+        height: 156px;
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+    .visual_bg{
+        min-height: 156px;
+        background-image: url(../images/uploads/m_banner.jpg);
+        background-repeat: no-repeat;
+        padding-top: 1%;
+        box-sizing: border-box;
+        float: left;
+    }
+    .inner_main_txt{
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .inner_main_txt h2{
+        width: 100%;
+        height: 60px;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+    }
+    .inner_main_txt .txt_2{
+        width: 100%;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .inner_main_txt .txt_but{
+        display: none;
+    }
+    #visual_but{
+        width: 100%;
+        height: 10px;
+        position: absolute;
+        top: 87%;
+        text-align: center;
+    }
+    .but{
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        text-indent: -9999px;
+        margin-right: 18px;
+    }
+    .but:last-child{
+        margin-right: 0;
+    }
+    .but.on{
+        background-color: #004694;
+    }
+    
+    /*3.qprod영역*/
+    .con_title_wrap{
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+    .qprod_title{
+        width: 75px;
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        line-height: 40px;
+        border-bottom: 4px solid #004694;
+        margin: 0 auto;
+    }
+    .qprod_wrap{
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        position: relative;
+    }
+    .qprod_but{
+        width: 20px;
+        height: 39px;
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .qprod_but.prev{
+        background-image: url(../images/common/visual_left_btn.png);
+        left: 10px;
+    }
+    .qprod_but.next{
+        background-image: url(../images/common/visual_right_btn.png);
+        right: 10px;
+    }
+    .qprod_row_wrap{
+        width: 280px;
+        height: 260px;
+        overflow: hidden;
+        position: absolute;
+        top:0;
+        left: 50%;
+        margin-left: -140px;
+    }
+    .qprod_row{
+        width: 1680px;
+        height: 260px;
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+    .qprod_col{
+        width: 280px;
+        height: 260px;
+        float: left;
+    }
+    .qprod_col>a{
+        display: block;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    .qprod_img{
+        width: 278px;
+        height: 202px;
+    }
+    .qprod_img>img{
+        width: 100%;
+        height: 100%;
+    }
+    .qprod_txt{
+        height: 58px;
+        background-color: #004694;
+        padding: 12px 0;
+        box-sizing: border-box;
+    }
+    .qprod_txt>p{
+        width: 100%;
+        text-align: center;
+        color: #fff;
+    }
+    .qprod_top_txt{
+        margin-bottom: 5px;
+    }
+    .qprod_bottom_txt{
+        font-size: 13px;
+    }
+    
+    
+    footer{
+        width: 100%;
+        overflow: hidden;
+        background-color: #363636;
+        padding: 30px 30px;
+        box-sizing: border-box;
+        font-size: 13px;
+    }
+    .foot_col{
+        width: 100%;
+    }
+    #f_logo{
+        width: 130px;
+        height: 19px;
+        margin-bottom: 15px;
+    }
+    .copy,adress{
+        line-height: 20px;
+    }
+    .foot.copy,adress{
+        color: #999;
+    }
+    .foot_col:nth-child(2),.foot_col:nth-child(3){
+        width: 100%;
+        margin-top: 10px;
+        color: #ccc;
+    }
+    .foot_col h4{
+        height: 28px;
+        font-size: 18px;
+    }
+    .foot_info{
+        height: 22px;
+        line-height: 22px;
+    }
+    .foot_info>span{
+        margin-left: 50px;
+    }
+    .foot_info:last-child>span{
+        margin-left: 30px;
+    }
+    
+    .pu{
+        display: none;
+    }
+    
+ 
+
+    
+    
+    
+    
+    
+    
+}/*end*/
