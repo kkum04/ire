@@ -23,6 +23,33 @@ class Category extends Admin
         $this->load->view("/admin/category/list_v", $data);
     }
 
+    function update_form($category_id) {
+        $data['category'] = $this->Category_m->get_category($category_id);
+        $this->load->view('/admin/category/update_form_v', $data);
+    }
+
+    function update($category_id) {
+        $post = $this->input->post();
+        if( isset($post["category_name"]) == false ) {
+            redirect_go("카테고리 이름을 입력하세요.", "/admin/category");
+            return false;
+        }
+
+        $result = $this->Category_m->update_category($category_id, $post);
+        if($result == FALSE) {
+            redirect_go("카테고리 수정을 실패했습니다.", "/admin/category");
+            return FALSE;
+        }
+
+        redirect_go("카테고리를 수정 했습니다.", "/admin/category");
+    }
+
+
+    /**
+     * 카테고리들 순서 변경
+     * @param $src_category_id
+     * @param $direction
+     */
     function update_order($src_category_id, $direction) {
         $src_category = $this->Category_m->get_category($src_category_id);
 
