@@ -49,7 +49,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">제품</h1>
+                    <h1 class="page-header">카테고리</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -58,64 +58,39 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            제품 목록
+                            카텍호리 목록
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/admin/product" class="row" method="get">
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <label>상품 카테고리</label>
-                                        <select class="form-control" id="cur_category" name="cur_category">
-                                            <?php foreach($primary_category as $category): ?>
-                                                <option value="<?php echo $category->id;?>"
-                                                        <?php echo $category->id == $cur_category ? 'selected' : '' ?>>
-                                                    <?php echo $category->name;?>
-                                                </option>
-                                            <?php endforeach;?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-
                             <table width="100%" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>순서</th>
-                                        <th>제품명</th>
                                         <th>카테고리</th>
-                                        <th>이미지</th>
-                                        <th>규격</th>
-                                        <th>재질</th>
                                         <th>수정</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($product_list as $product): ?>
+                                    <?php foreach($categories as $category): ?>
                                     <tr class="odd gradeX">
                                         <td>
                                             <a class="btn btn-primary"
-                                               href="/admin/product/update_product_order/<?php echo $product->id?>/prev">▲
+                                               href="/admin/category/update_order/<?php echo $category->category_id?>/prev">
+                                                ▲
                                             </a>
                                             <a class="btn btn-primary"
-                                               href="/admin/product/update_product_order/<?php echo $product->id?>/next">
+                                               href="/admin/category/update_order/<?php echo $category->category_id?>/next">
                                                 ▼
                                             </a>
                                         </td>
-                                        <td><?php echo $product->name?></td>
-                                        <td><?php echo $product->category_name?></td>
-                                        <td>
-                                            <img src="<?php echo $product->product_image?>" alt="상품 이미지" width="100px"/>
-                                        </td>
-                                        <td><?php echo $product->size?></td>
-                                        <td><?php echo $product->quality?></td>
+                                        <td><?php echo $category->category_name?></td>
                                         <td>
                                             <a class="btn btn-default"
-                                               href="/admin/product/change/<?php echo $product->id?>">
+                                               href="/admin/category/update_form/<?php echo $category->category_id?>">
                                                 수정
                                             </a>
                                             <a class="btn btn-danger btn_delete_product"
-                                                href="/admin/product/delete_product/<?php echo $product->id?>">
+                                                href="/admin/category/delete/<?php echo $category->category_id?>">
                                                 삭제
                                             </a>
                                         </td>
@@ -125,7 +100,7 @@
                             </table>
 
                             <a class="btn btn-default"
-                               href="/admin/product/add">
+                               href="/admin/category/create_form">
                                 추가
                             </a>
                         </div>

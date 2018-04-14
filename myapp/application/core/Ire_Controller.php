@@ -18,6 +18,10 @@ class Ire_Controller extends CI_Controller
         $this->load->helper('cambus_common_helper');
         $this->load->helper('url_helper');
 
+        $this->load->database();
+
+        $this->load->model('Category_m');
+
         $this->load_header();
         $this->load_footer();
         $this->load_sitemap();

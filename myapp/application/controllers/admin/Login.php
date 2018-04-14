@@ -30,7 +30,7 @@ class Login extends Ire_Controller
         }
 
         $_SESSION['member'] = $member;
-        redirect("/admin/product/");
+        redirect("/admin/category/");
     }
 
     function create_password($password) {
