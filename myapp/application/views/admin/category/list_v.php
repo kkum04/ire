@@ -89,7 +89,7 @@
                                                href="/admin/category/update_form/<?php echo $category->category_id?>">
                                                 수정
                                             </a>
-                                            <a class="btn btn-danger btn_delete_product"
+                                            <a class="btn btn-danger btn_delete_category"
                                                 href="/admin/category/delete/<?php echo $category->category_id?>">
                                                 삭제
                                             </a>
@@ -107,20 +107,6 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div>
-                                Showing 1 to 10 of 57 entries
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="dataTables_paginate paging_simple_numbers">
-                                <?php echo $pagination?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -149,12 +135,8 @@
 
     <script>
         $(function (){
-            $('#cur_category').change(function (){
-                $('form').submit();
-            });
-
-            $('.btn_delete_product').click(function (){
-                return confirm("상품을 삭제 하시겠습니까?");
+            $('.btn_delete_category').click(function (){
+                return confirm("카테고리를 삭제 하시겠습니까?");
             });
         });
     </script>

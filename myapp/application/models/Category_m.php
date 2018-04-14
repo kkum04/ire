@@ -50,7 +50,7 @@ class Category_m extends CI_Model
         return $query->row();
     }
 
-    function  create_category( $insert_data ) {
+    function create_category( $insert_data ) {
         $this->db->insert('category', $insert_data);
         $error = $this->db->error();
         if($error['code'] != 0)
@@ -59,7 +59,7 @@ class Category_m extends CI_Model
             return FALSE;
         }
 
-        return TRUE;
+        return $this->db->insert_id();
     }
 
     function update_category( $category_id, $update_data ) {

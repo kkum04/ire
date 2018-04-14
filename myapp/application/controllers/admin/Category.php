@@ -44,6 +44,38 @@ class Category extends Admin
         redirect_go("카테고리를 수정 했습니다.", "/admin/category");
     }
 
+    function create_form() {
+        $this->load->view('/admin/category/create_form_v');
+    }
+
+    function create() {
+        $post = $this->input->post();
+        if( isset($post["category_name"]) == false ) {
+            redirect_go("카테고리 이름을 입력하세요.", "/admin/category");
+            return false;
+        }
+
+        $result = $this->Category_m->create_category($post);
+        if($result == FALSE) {
+            redirect_go("카테고리 추가를 실패했습니다.", "/admin/category");
+            return FALSE;
+        }
+
+        $this->Category_m->update_category($result, Array('order' => $result));
+
+        redirect_go("카테고리를 추가 했습니다.", "/admin/category");
+    }
+
+    function delete($category_id) {
+        $result = $this->Category_m->delete_category($category_id);
+        if($result == FALSE) {
+            redirect_go("카테고리 삭제를 실패했습니다.", "/admin/category");
+            return FALSE;
+        }
+
+        redirect_go("카테고리를 삭제 했습니다.", "/admin/category");
+    }
+
 
     /**
      * 카테고리들 순서 변경
