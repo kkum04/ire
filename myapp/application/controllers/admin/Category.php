@@ -8,8 +8,6 @@ class Category extends Admin
     function __construct()
     {
         parent::__construct();
-
-        $this->load->library('pagination');
     }
 
     function index()

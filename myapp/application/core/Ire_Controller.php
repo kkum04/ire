@@ -28,7 +28,9 @@ class Ire_Controller extends CI_Controller
     }
 
     private function load_header() {
-        $this->header = $this->load->view('/include/header_v', NULL, TRUE);
+        $data['categories'] = $this->Category_m->get_categories();
+
+        $this->header = $this->load->view('/include/header_v', $data, TRUE);
     }
 
     private function load_footer() {
