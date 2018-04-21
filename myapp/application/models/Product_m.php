@@ -31,32 +31,18 @@ class Product_m extends CI_Model
         return $query->row();
     }
 
-    function get_product_list( $category_id, $limit_info = NULL, $type = 'list' ) {
-        if( $type == 'list') {
-            $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
-                          P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
-
-            if( $limit_info != NULL) {
-                $this->db->limit($limit_info['limit'], $limit_info['start']);
-            }
-        } else {
-            $this->db->select('COUNT(*) AS cnt');
-        }
+    function get_products($category_id) {
+        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
+              P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
 
         $this->db->from("product AS P");
         $this->db->join("category AS C", "P.category_id = C.category_id");
 
-        $this->db->where('C.category_d', $category_id);
+        $this->db->where('P.category_id', $category_id);
         $this->db->order_by("P.order", "DESC");
 
         $query = $this->db->get();
-        if( $type == 'list' ) {
-            $result = $query->result();
-            //echo $this->db->last_query();
-        } else {
-            $result = $query->row();
-        }
-        return $result;
+        return $query->result();
     }
 
     function create_product( $insert_data ) {
@@ -97,7 +83,7 @@ class Product_m extends CI_Model
         $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
         $this->db->from('product AS P');
-        $this->db->join("category AS C", "P.cagegory_id = C.category_id");
+        $this->db->join("category AS C", "P.category_id = C.category_id");
         $this->db->where('P.category_id', $category_id);
         $this->db->where('P.order > ', $order);
         $this->db->order_by('P.order', 'ASC');
@@ -111,7 +97,7 @@ class Product_m extends CI_Model
         $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
         $this->db->from('product AS P');
-        $this->db->join("category AS C", "P.product_id = C.category_id");
+        $this->db->join("category AS C", "P.category_id = C.category_id");
         $this->db->where('C.category_id', $category_id);
         $this->db->where('P.order < ', $order);
         $this->db->order_by('P.order', 'DESC');

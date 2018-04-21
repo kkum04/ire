@@ -18,37 +18,15 @@ class Product extends Admin
     }
 
     function lists() {
-        $primary_category = $this->Product_m->get_product_primary_category();
+        $category_id = $this->input->get('cur_category');
 
-        $cur_category = $this->input->get("cur_category");
-        $cur_page = $this->input->get('per_page');
-        $per_page = 10;
+        $data['categories'] = $this->Category_m->get_categories();
+        if( $category_id == null ) {
+            $category_id = $data['categories'][0]->category_id;
+        }
 
-        $cur_category = $cur_category == NULL ? $primary_category[0]->id : $cur_category;
-        $cur_page = $cur_page == NULL ? '1' : $cur_page;
-
-        $limit_info = Array(
-            'limit' => $per_page,
-            'start' => ($cur_page - 1) * $per_page
-        );
-
-        $query_string = "cur_category={$cur_category}";
-        $config = get_paging_config();
-        $config['total_rows'] = $this->Product_m->get_product_list($cur_category, NULL, 'count')->cnt;
-        $config['per_page'] = $per_page;
-        $config['num_links'] = 5;
-        $config['base_url'] = base_url(uri_string()).'?'.$query_string;
-        $this->pagination->initialize($config);
-
-        $product_list = $this->Product_m->get_product_list($cur_category, $limit_info);
-
-        $data['cur_category'] = $cur_category;
-        $data['primary_category'] = $primary_category;
-        $data['product_list'] = $product_list;
-        $data['total_rows'] = $config['total_rows'];
-        $data['total_page'] = ceil($data['total_rows'] / $per_page);
-        $data['cur_page'] = $cur_page;
-        $data['pagination'] = $this->pagination->create_links();
+        $data['cur_category_id'] = $category_id;
+        $data['products'] = $this->Product_m->get_products($category_id);
 
         $this->load->view("/admin/product/list_v", $data);
     }
@@ -122,38 +100,40 @@ class Product extends Admin
         echo IMAGE_URL.'/'.$upload_data['file_name'];
     }
 
-    function delete_product($product_id) {
+    function delete($product_id) {
         $result = $this->Product_m->delete_product($product_id);
         if($result == FALSE) {
             redirect_go("제품 삭제를 실패했습니다.", "/admin/product");
             return FALSE;
         }
 
-        redirect_go("제품을 삭제 했습니다.", "/admin/product");
+        redirect_go("제품을 삭제했습니다.", "/admin/product");
     }
 
 
-    function update_product_order($src_product_id, $direction) {
-        $src_product_info = $this->Product_m->get_product_info($src_product_id);
+    function update_order($src_product_id, $direction) {
+        $src_product = $this->Product_m->get_product($src_product_id);
 
         if( $direction == 'prev') {
-            $target_product_info = $this->Product_m->get_prev_product(
-                $src_product_info->order,
-                $src_product_info->parent_id
+            $target_product = $this->Product_m->get_prev_product(
+                $src_product->order,
+                $src_product->category_id
             );
         } else {
-            $target_product_info = $this->Product_m->get_next_product(
-                $src_product_info->order,
-                $src_product_info->parent_id
+            $target_product = $this->Product_m->get_next_product(
+                $src_product->order,
+                $src_product->category_id
             );
         }
 
-        if($target_product_info == NULL) {
+
+
+        if($target_product == NULL) {
             redirect_back('');
             return;
         }
 
-        $result = $this->Product_m->update_product_order($src_product_id, $target_product_info->id);
+        $result = $this->Product_m->update_product_order($src_product_id, $target_product->product_id);
         if( $result == TRUE ) {
             redirect_back('순서 변경 완료');
         } else {
