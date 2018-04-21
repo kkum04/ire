@@ -62,37 +62,52 @@ class Product extends Admin
     function create() {
         $post = $this->input->post();
         if( isset($post["product_name"]) == false ) {
-            redirect_go("상품 이름을 입력하세요.", "/admin/product");
+            redirect_go("제품 이름을 입력하세요.", "/admin/product");
             return false;
         }
 
         if( isset($post["product_image"]) == false ) {
-        redirect_go("상품 이미지를 등록하세요.", "/admin/product");
+        redirect_go("제품 이미지를 등록하세요.", "/admin/product");
             return false;
         }
 
         $result = $this->Product_m->create_product($post);
         if($result == FALSE) {
-            redirect_go("상품 추가를 실패했습니다.", "/admin/product");
+            redirect_go("제품 추가를 실패했습니다.", "/admin/product");
             return FALSE;
         }
 
         $this->Product_m->update_product($result, Array('order' => $result));
 
-        redirect_go("상품을 추가했습니다.", "/admin/product");
+        redirect_go("제품을 추가했습니다.", "/admin/product");
     }
 
-    function change($product_id) {
-        $product_info = $this->Product_m->get_product_info($product_id);
-        $primary_category = $this->Product_m->get_product_primary_category();
-        $brother_category = $this->Product_m->get_children_product_category($product_info->parent_id);
+    function update_form($product_id) {
+        $product = $this->Product_m->get_product($product_id);
+        if( $product == null ) {
+            redirect_go("잘못된 접근입니다.", "/admin/product");
+            return;
+        }
 
+        $data['categories'] = $this->Category_m->get_categories();
+        $data['product'] = $product;
+        $this->load->view('/admin/product/update_form_v', $data);
+    }
 
-        $data['product_info'] = $product_info;
-        $data['primary_category'] = $primary_category;
-        $data['brother_category'] = $brother_category;
+    function update( $product_id ) {
+        $post = $this->input->post();
+        if( isset($post["product_name"]) == false ) {
+            redirect_go("제품 이름을 입력하세요.", "/admin/product");
+            return false;
+        }
 
-        $this->load->view('/admin/product/change_v', $data);
+        $result = $this->Product_m->update_product($product_id, $post);
+        if($result == FALSE) {
+            redirect_go("제품 수정을 실패했습니다.", "/admin/product");
+            return FALSE;
+        }
+
+        redirect_go("제품을 수정했습니다.", "/admin/product");
     }
 
     function upload_product_image() {
@@ -107,55 +122,16 @@ class Product extends Admin
         echo IMAGE_URL.'/'.$upload_data['file_name'];
     }
 
-    function insert_product() {
-        $post = $this->input->post();
-        if( isset($post["name"]) == false ) {
-            redirect_go("이름을 입력하세요.", "/admin/product");
-            return false;
-        }
-
-        $result = $this->Product_m->insert_product($post);
-        if($result == FALSE) {
-            redirect_go("상품 추가를 실패했습니다.", "/admin/product");
-            return FALSE;
-        }
-
-        $this->Product_m->update_product($result, Array('order' => $result));
-
-        redirect_go("상품을 추가 했습니다.", "/admin/product");
-    }
-
-    function update_product($product_id) {
-        $post = $this->input->post();
-        if( isset($post["name"]) == false ) {
-            redirect_go("이름을 입력하세요.", "/admin/product");
-            return false;
-        }
-
-        $result = $this->Product_m->update_product($product_id, $post);
-        if($result == FALSE) {
-            redirect_go("상품 수정을 실패했습니다.", "/admin/product");
-            return FALSE;
-        }
-
-        redirect_go("상품을 수정 했습니다.", "/admin/product");
-    }
-
     function delete_product($product_id) {
         $result = $this->Product_m->delete_product($product_id);
         if($result == FALSE) {
-            redirect_go("상품 삭제를 실패했습니다.", "/admin/product");
+            redirect_go("제품 삭제를 실패했습니다.", "/admin/product");
             return FALSE;
         }
 
-        redirect_go("상품을 삭제 했습니다.", "/admin/product");
+        redirect_go("제품을 삭제 했습니다.", "/admin/product");
     }
 
-    function get_product_category($parent_category) {
-        $product_category_list = $this->Product_m->get_children_product_category($parent_category);
-
-        echo json_encode($product_category_list);
-    }
 
     function update_product_order($src_product_id, $direction) {
         $src_product_info = $this->Product_m->get_product_info($src_product_id);

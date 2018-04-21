@@ -20,7 +20,7 @@ class Product_m extends CI_Model
     }
 
     function get_product($product_id) {
-        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order,
+        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
         $this->db->from('product AS P');
         $this->db->join('category AS C', "P.category_id = C.category_id");
@@ -33,7 +33,7 @@ class Product_m extends CI_Model
 
     function get_product_list( $category_id, $limit_info = NULL, $type = 'list' ) {
         if( $type == 'list') {
-            $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order,
+            $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
 
             if( $limit_info != NULL) {
@@ -94,7 +94,7 @@ class Product_m extends CI_Model
     }
 
     function get_prev_product( $order, $category_id ) {
-        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order,
+        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
         $this->db->from('product AS P');
         $this->db->join("category AS C", "P.cagegory_id = C.category_id");
@@ -108,7 +108,7 @@ class Product_m extends CI_Model
     }
 
     function get_next_product( $order, $category_id ) {
-        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order,
+        $this->db->select('P.product_id, P.category_id, P.product_name, P.description_file, P.cad_file, P.order, P.product_image,
                           P.description, P.product_spec, P.product_feature, P.created_at, P.updated_at, C.category_name');
         $this->db->from('product AS P');
         $this->db->join("category AS C", "P.product_id = C.category_id");
