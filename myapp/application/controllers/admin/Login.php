@@ -12,7 +12,7 @@ class Login extends Ire_Controller
 
     function index() {
         if( isset($_SESSION["member"]) == true ) {
-            redirect("/admin/product");
+            redirect("/admin/category");
         }
 
         $this->load->view("/admin/login/login_v");

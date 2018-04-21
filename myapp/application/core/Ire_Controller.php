@@ -15,6 +15,7 @@ class Ire_Controller extends CI_Controller
     {
         parent::__construct();
 
+        $this->load->library('session');
         $this->load->helper('cambus_common_helper');
         $this->load->helper('url_helper');
 
