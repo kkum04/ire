@@ -53,11 +53,33 @@ class Product extends Admin
         $this->load->view("/admin/product/list_v", $data);
     }
 
-    function add() {
-        $primary_category = $this->Product_m->get_product_primary_category();
+    function create_form() {
+        $data['categories'] = $this->Category_m->get_categories();
 
-        $data['primary_category'] = $primary_category;
-        $this->load->view('/admin/product/add_v', $data);
+        $this->load->view('/admin/product/create_form_v', $data);
+    }
+
+    function create() {
+        $post = $this->input->post();
+        if( isset($post["product_name"]) == false ) {
+            redirect_go("상품 이름을 입력하세요.", "/admin/product");
+            return false;
+        }
+
+        if( isset($post["product_image"]) == false ) {
+        redirect_go("상품 이미지를 등록하세요.", "/admin/product");
+            return false;
+        }
+
+        $result = $this->Product_m->create_product($post);
+        if($result == FALSE) {
+            redirect_go("상품 추가를 실패했습니다.", "/admin/product");
+            return FALSE;
+        }
+
+        $this->Product_m->update_product($result, Array('order' => $result));
+
+        redirect_go("상품을 추가했습니다.", "/admin/product");
     }
 
     function change($product_id) {
@@ -74,7 +96,7 @@ class Product extends Admin
     }
 
     function upload_product_image() {
-        $upload_data = $this->_upload_file('upload', PRODUCT_IMAGE_DIR, 'jpg|gif|jpeg|png');
+        $upload_data = $this->_upload_file('upload', IMAGE_DIR, 'jpg|gif|jpeg|png|pdf');
 
         if ( isset($upload_data['error']) ==  true)
         {
@@ -82,7 +104,7 @@ class Product extends Admin
             return;
         }
 
-        echo PRODUCT_IMAGE_URL.'/'.$upload_data['file_name'];
+        echo IMAGE_URL.'/'.$upload_data['file_name'];
     }
 
     function insert_product() {

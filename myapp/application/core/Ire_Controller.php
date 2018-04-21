@@ -22,6 +22,7 @@ class Ire_Controller extends CI_Controller
         $this->load->database();
 
         $this->load->model('Category_m');
+        $this->load->model('Product_m');
 
         $this->load_header();
         $this->load_footer();
@@ -40,5 +41,23 @@ class Ire_Controller extends CI_Controller
 
     private function load_sitemap() {
         $this->sitemap = $this->load->view('/include/sitemap_v', NULL, TRUE);
+    }
+
+    /**
+     * @brief 파일 업로드
+     * @param $file
+     * @param $upload_path
+     * @param $allow_type '| | | '
+     * @return array|bool
+     */
+    protected function _upload_file($file, $upload_path, $allow_type)
+    {
+        $config['upload_path'] = $upload_path;
+        $config['max_size'] = 100000;
+        $config['encrypt_name'] = TRUE;
+        $config['allowed_types'] = $allow_type;
+
+        $upload_data = upload($file, $config);
+        return $upload_data;
     }
 }

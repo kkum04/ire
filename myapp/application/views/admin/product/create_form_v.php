@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>61 Timber Admin</title>
+    <title>Ire Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/bootstrap_admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,6 @@
         <!-- Navigation -->
         <?php echo $this->left_menu;?>
 
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -60,52 +59,66 @@
                         <div class="panel-heading">
                             제품 추가
                         </div>
+
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/admin/product/insert_product" method="POST">
+                            <form action="/admin/product/create" method="POST">
                                 <div class="form-group">
                                     <label>제품 이름</label>
-                                    <input class="form-control" placeholder="제품 이름" name="name">
+                                    <input class="form-control"
+                                           placeholder="제품 이름"
+                                           name="product_name">
                                 </div>
 
-                                <div class="form-group">
+                                <div>
                                     <label>제품 이미지</label>
-                                    <input id="upload" type="file" onchange="upload_image()"/>
-                                    <input name="product_image" type="hidden" value="" />
+                                    <input type="file"
+                                           id="product_image_file"
+                                           onchange="upload_image('product_image_file', 'product_image')"/>
+                                    <input type="hidden" name="product_image" id="product_image" />
                                 </div>
 
-                                <div class="form-group" >
-                                    <label>상품 카테고리</label>
-                                    <select class="form-control" id="primary_category">
-                                        <?php foreach($primary_category as $category): ?>
-                                            <option value="<?php echo $category->id;?>">
-                                                <?php echo $category->name;?>
-                                            </option>
-                                        <?php endforeach;?>
+                                <div class="form-group">
+                                    <label>제품 카테고리</label>
+                                    <select class="form-control" name="category_id">
+                                        <?php
+                                        foreach($categories as $category)
+                                        {
+                                            echo "<option value='{$category->category_id}'>{$category->category_name}</option>";
+                                        }
+                                        ?>
                                     </select>
-
-                                    <select class="form-control" name="category" id="category">
-                                    </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>규격</label>
-                                    <input class="form-control" placeholder="50cm(w) x 100cm(h) x 60cm" name="size">
+                                    <label>제품 설명서</label>
+                                    <input type="file"
+                                           id="description_image_file"
+                                           onchange="upload_image('description_image_file', 'description_file')"/>
+                                    <input type="hidden" name="description_file" id="description_file" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label>재질</label>
-                                    <input class="form-control" placeholder="참나무" name="quality">
+                                    <label>외형도</label>
+                                    <input type="file"
+                                           id="cad_image_file"
+                                           onchange="upload_image('cad_image_file', 'cad_File')" />
+                                    <input type="hidden" name="cad_file" id="cad_File"/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>특징</label>
-                                    <input class="form-control" name="feature">
+                                    <label>제품 설명</label>
+                                    <textarea name="description" class="form-control"></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>상세</label>
-                                    <textarea class="form-control" name="detail"></textarea>
+                                    <label>제품 사양</label>
+                                    <textarea name="product_spec" class="form-control"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>제품 특징</label>
+                                    <textarea name="product_feature" class="form-control"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -113,7 +126,7 @@
                     </div>
                     <!-- /.panel -->
 
-                    <button class="btn btn-primary" id="btn_insert">추가</button>
+                    <button class="btn btn-primary" id="btn_create">추가</button>
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -130,49 +143,19 @@
     <script src="/bootstrap_admin/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="/bootstrap_admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="/bootstrap_admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="/bootstrap_admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="/bootstrap_admin/dist/js/sb-admin-2.js"></script>
 
-    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-
-
     <script>
         $(function (){
-            CKEDITOR.replace( 'detail', {
-                customConfig: '/js/ckeditor/config.js'
-            } );
+            $('#btn_create').click(function (){
+                if( $('input[name="product_name"]').val() === '' ) {
+                    alert('제품 이름을 입력해주세요.');
+                    return;
+                }
 
-            $('#cur_category').change(function (){
-                $('form').submit();
-            });
-
-            $('#primary_category').change( function () {
-                var parent_category = $('#primary_category option:selected').val();
-
-                $.ajax({
-                    type: "GET",
-                    url: "/admin/product/get_product_category/" + parent_category,
-                    success: function (data) {
-                        $('#category').html('');
-
-                        var category_list = $.parseJSON(data);
-                        $.each(category_list, function( index, value ) {
-                            $('<option></option>').val(value.id)
-                                .text(value.name)
-                                .appendTo('#category');
-                        });
-                    }
-                });
-            });
-            $('#primary_category').trigger('change');
-
-            $('#btn_insert').click(function (){
-                if( $('input[name="name"]').val() == '' ) {
-                    alert("제품 이름을 입력해주세요.");
+                if( $('input[name="product_image"]').val() === '' ) {
+                    alert('제품 이미지를 입력해주세요.');
                     return;
                 }
 
@@ -180,11 +163,11 @@
             });
         });
 
-        function upload_image() {
+        function upload_image(fieldId, inputId) {
             var formData = new FormData();
 
             formData.append('upload_field', 'upload');
-            formData.append('upload', $("#upload")[0].files[0]);
+            formData.append('upload', $("#" + fieldId)[0].files[0]);
 
             $.ajax({
                 type: "POST",
@@ -198,7 +181,7 @@
                         return false;
                     }
 
-                    $('input[name="product_image"]').val(data);
+                    $('#' + inputId).val(data);
                 }
             });
         }

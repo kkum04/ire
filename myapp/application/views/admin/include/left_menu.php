@@ -28,14 +28,14 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="/admin/product">
-                        <i class="fa fa-bar-chart-o fa-fw"></i>제품
+                    <a href="/admin/category">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>카테고리
                     </a>
                 </li>
 
                 <li>
-                    <a href="/admin/gallery">
-                        <i class="fa fa-bar-chart-o fa-fw"></i>갤러리
+                    <a href="/admin/product">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>제품
                     </a>
                 </li>
                 <li>
