@@ -71,6 +71,14 @@
                                            name="product_name">
                                 </div>
 
+                                <div class="form-group">
+                                    <label>제품 유형</label>
+                                    <input class="form-control"
+                                           placeholder="제품 유형"
+                                           value="<?=$product->product_type?>"
+                                           name="product_type">
+                                </div>
+
                                 <div>
                                     <label>제품 이미지</label>
                                     <input type="file"

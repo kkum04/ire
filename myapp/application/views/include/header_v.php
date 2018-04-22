@@ -84,116 +84,19 @@
                     <div class="sub_menu_box">
                         <div class="container">
                             <ul id="sub_menu_item">
+                                <?php foreach($category->products as $product) : ?>
                                 <li>
-                                    <a href="#">
+                                    <a href="/product/detail/<?=$product->product_id?>">
                                         <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
+                                            <img src="<?=$product->product_image?>" />
                                         </div>
                                         <div class="txt_area">
-                                            <p>LSW-101</p>
-                                            <p>일반형</p>
+                                            <p><?=$product->product_name?></p>
+                                            <p><?=$product->product_type?></p>
                                         </div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101L</p>
-                                            <p>일반램프형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101R</p>
-                                            <p>일반형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101RL</p>
-                                            <p>일반램프형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101EX</p>
-                                            <p>방폭형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101EXL</p>
-                                            <p>방폭램프형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101EXR</p>
-                                            <p>방폭형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>LSW-101EXRL</p>
-                                            <p>방폭램프형</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>MAGNET REED SWITCH</p>
-                                            <p>(LSW-1012)</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img_area">
-                                            <img src="/static/images/menu/sample.jpg" />
-                                        </div>
-                                        <div class="txt_area">
-                                            <p>PULL CORD SWITCH</p>
-                                            <p>ACCESSORY</p>
-                                        </div>
-                                    </a>
-                                </li>
+                                <?php endforeach;; ?>
                             </ul>
                         </div>
                     </div>

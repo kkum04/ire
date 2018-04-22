@@ -30,8 +30,12 @@ class Ire_Controller extends CI_Controller
     }
 
     private function load_header() {
-        $data['categories'] = $this->Category_m->get_categories();
+        $categories = $this->Category_m->get_categories();
+        foreach($categories as $category) {
+            $category->products = $this->Product_m->get_products($category->category_id);
+        }
 
+        $data['categories'] = $categories;
         $this->header = $this->load->view('/include/header_v', $data, TRUE);
     }
 
