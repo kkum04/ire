@@ -63,23 +63,25 @@
                         <ul class="m_gnb_dept_2">
                             <?php foreach($categories as $category): ?>
                             <li>
-                                <a href="#"><?php echo $category->category_name?></a>
+                                <a href="/category/<?=$category->category_id?>">
+                                    <?php echo $category->category_name?>
+                                </a>
                             </li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
                     <li class="m_gnb_dept_1">
-                        <a href="#">기술현황</a>
+                        <a href="/tech">기술현황</a>
                     </li>
                     <li class="m_gnb_dept_1">
-                        <a href="#">고객지원</a>
+                        <a href="/customer">고객지원</a>
                     </li>
                 </ul>
             </div>
             <ul id="top_menu">
                 <?php foreach($categories as $category): ?>
                 <li>
-                    <a href="#"><?php echo $category->category_name ?></a>
+                    <a href="/category/<?=$category->category_id?>"><?php echo $category->category_name ?></a>
                     <div class="underline"></div>
                     <div class="sub_menu_box">
                         <div class="container">
