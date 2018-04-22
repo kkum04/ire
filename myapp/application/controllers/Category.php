@@ -24,20 +24,6 @@ class Category extends Ire_Controller
         $data['category'] = $category;
         $data['category_products'] = $category_products;
 
-        $this->load->view('/category/list_v', $data);
-    }
-
-    function lists($category_id) {
-        $category = $this->Category_m->get_category($category_id);
-        if($category == null){
-            redirect_go("잘못된 접근입니다.", "/");
-            return;
-        }
-
-        $category_products = $this->Product_m->get_products($category_id);
-        $data['category'] = $category;
-        $data['category_products'] = $category_products;
-
-        $this->load->view('/category/list_v', $data);
+        $this->load->view('/category/category_v', $data);
     }
 }
