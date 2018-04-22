@@ -10,6 +10,7 @@ class Ire_Controller extends CI_Controller
 {
     var $header;
     var $footer;
+    var $categoryies;
 
     public function __construct()
     {
@@ -30,12 +31,12 @@ class Ire_Controller extends CI_Controller
     }
 
     private function load_header() {
-        $categories = $this->Category_m->get_categories();
-        foreach($categories as $category) {
+        $this->categoryies = $this->Category_m->get_categories();
+        foreach($this->categoryies as $category) {
             $category->products = $this->Product_m->get_products($category->category_id);
         }
 
-        $data['categories'] = $categories;
+        $data['categories'] = $this->categoryies;
         $this->header = $this->load->view('/include/header_v', $data, TRUE);
     }
 
@@ -44,7 +45,8 @@ class Ire_Controller extends CI_Controller
     }
 
     private function load_sitemap() {
-        $this->sitemap = $this->load->view('/include/sitemap_v', NULL, TRUE);
+        $data['categories'] = $this->categoryies;
+        $this->sitemap = $this->load->view('/include/sitemap_v', $data, TRUE);
     }
 
     /**
