@@ -14,6 +14,7 @@
  * @property Member_m                 $Member_m
  * @property Product_m                $Product_m
  * @property Category_m               $Category_m
+ * @property Tech_m                   $Tech_m
  * @property Faq_m                    $Faq_m
  *
  *
