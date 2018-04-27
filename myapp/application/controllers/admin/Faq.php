@@ -61,7 +61,7 @@ class Faq extends Admin
             return false;
         }
 
-        $post['owner'] = "운영자";
+        $post['owner'] = "이레스위치";
         $result = $this->Faq_m->insert_faq($post);
         if($result == FALSE) {
             redirect_go("FAQ 추가를 실패했습니다.", "/admin/faq/lists");

@@ -33,13 +33,13 @@
                         </a>
                         <ul class="sub_nav_dp2 dp2_1 narr">
                             <li>
-                                <a href="#">회사소개</a>
+                                <a href="/company/ceo">회사소개</a>
                             </li>
                             <li>
-                                <a href="#">제품소개</a>
+                                <a href="/category">제품소개</a>
                             </li>
                             <li>
-                                <a href="#">기술현황</a>
+                                <a href="/tech">기술현황</a>
                             </li>
                         </ul>
                     </li>
@@ -75,22 +75,22 @@
                                    <thead>
                                        <tr>
                                            <th class="align_left">
-                                               안녕하세요 이레스위치입니다.
+                                               <?= $faq->title?>
                                            </th>
-                                           <th>2018-02-21</th>
+                                           <th><?= date_format(new DateTime($faq->created_at),'Y.m.d');?></th>
                                        </tr>
                                    </thead>
                                    <tbody>
                                        <tr>
                                            <td colspan="2" class="align_left detail">
-                                               안녕하세요? 이레스위치입니다.<br/>
+                                                <?=nl2br($faq->contents)?>
                                            </td>
                                        </tr>
                                    </tbody>
                             </table>
                         </div>
                         <div class="btn_list">
-                            <a href="#">
+                            <a href="/customer/lists">
                                 목록
                             </a>
                         </div>

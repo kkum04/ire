@@ -32,7 +32,7 @@
         <div class="container">
             <div id="logo_wrap">
                 <h1 id="logo">
-                    <a href="#">
+                    <a href="/">
                         <img src="/static/images/common/logo.png" alt="이레스위치 로고"/>
                     </a>
                 </h1>
