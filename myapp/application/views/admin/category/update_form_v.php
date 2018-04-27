@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>61 Timber Admin</title>
+    <title>Ire Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/bootstrap_admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
