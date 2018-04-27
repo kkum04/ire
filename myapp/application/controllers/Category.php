@@ -14,7 +14,13 @@ class Category extends Ire_Controller
 
     function index($category_id)
     {
-        $category = $this->Category_m->get_category($category_id);
+        if( $category_id == null ) {
+            $categories = $this->Category_m->get_categories();
+            $category = $categories[0];
+        } else {
+            $category = $this->Category_m->get_category($category_id);
+        }
+
         if($category == null){
             redirect_go("잘못된 접근입니다.", "/");
             return;
