@@ -46,7 +46,7 @@
                 </li>
 
                 <li>
-                    <a href="/admin/customer/faq">
+                    <a href="/admin/faq">
                         <i class="fa fa-bar-chart-o fa-fw"></i>FAQ
                     </a>
                 </li>

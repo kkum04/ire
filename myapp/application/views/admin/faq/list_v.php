@@ -58,31 +58,66 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            FAQ 추가
-                        </div>
+                            FAQ
+
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/admin/customer/faq/insert" method="POST">
-                                <div class="form-group">
-                                    <label>제목</label>
-                                    <input class="form-control"
-                                           placeholder="FAQ 제목"
-                                           name="title"
-                                           value="">
-                                </div>
 
-                                <div class="form-group">
-                                    <label>내용</label>
-                                    <textarea class="form-control" name="contents" rows="10"></textarea>
-                                </div>
-                            </form>
+                            <table width="100%" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>제목</th>
+                                        <th>작성자</th>
+                                        <th>조회수</th>
+                                        <th>등록일</th>
+                                        <th>관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($faq_list as $faq): ?>
+                                    <tr class="odd gradeX">
+                                        <td><?php echo $faq->id?></td>
+                                        <td><?php echo $faq->title?></td>
+                                        <td><?php echo $faq->owner?></td>
+                                        <td><?php echo $faq->hit?></td>
+                                        <td><?php echo $faq->created_at?></td>
+                                        <td>
+                                            <a class="btn btn-default"
+                                               href="/admin/faq/change/<?php echo $faq->id?>">
+                                                수정
+                                            </a>
+                                            <a class="btn btn-danger btn_delete_faq"
+                                                href="/admin/faq/delete/<?php echo $faq->id?>">
+                                                삭제
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach;?>
+                                </tbody>
+                            </table>
+
+                            <a class="btn btn-default"
+                               href="/admin/faq/add">
+                                추가
+                            </a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
 
-                    <button class="btn btn-primary" id="btn_change">추가</button>
-                    <a class="btn btn-primary" href="/admin/customer/faq/lists">목록</a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <?php echo $pagination?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
         </div>
         <!-- /#page-wrapper -->
@@ -106,25 +141,13 @@
     <!-- Custom Theme JavaScript -->
     <script src="/bootstrap_admin/dist/js/sb-admin-2.js"></script>
 
-    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 
     <script>
         $(function (){
-            $('#btn_change').click(function (){
-                if( $('input[name="title"]').val() == '' ) {
-                    alert("FAQ 제목을 입력해 주세요.");
-                    return;
-                }
-
-                if( $('[name="contents"]').val() == '' ) {
-                    alert('FAQ 내용을 입력해 주세요.');
-                    return;
-                }
-
-                $('form').submit();
+            $('.btn_delete_faq').click(function (){
+                return confirm("FAQ를 삭제 하시겠습니까?");
             });
         });
-
     </script>
 
 </body>

@@ -58,22 +58,22 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            FAQ 수정
+                            FAQ 추가
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form action="/admin/customer/faq/update/<?php echo $faq_info->id?>" method="POST">
+                            <form action="/admin/faq/insert" method="POST">
                                 <div class="form-group">
                                     <label>제목</label>
                                     <input class="form-control"
                                            placeholder="FAQ 제목"
                                            name="title"
-                                           value="<?php echo $faq_info->title?>">
+                                           value="">
                                 </div>
 
                                 <div class="form-group">
                                     <label>내용</label>
-                                    <textarea class="form-control" name="contents" rows="10"><?php echo $faq_info->contents ?></textarea>
+                                    <textarea class="form-control" name="contents" rows="10"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -81,8 +81,8 @@
                     </div>
                     <!-- /.panel -->
 
-                    <button class="btn btn-primary" id="btn_change">수정</button>
-                    <a class="btn btn-primary" href="/admin/customer/faq/lists">목록</a>
+                    <button class="btn btn-primary" id="btn_change">추가</button>
+                    <a class="btn btn-primary" href="/admin/faq/lists">목록</a>
             </div>
         </div>
         <!-- /#page-wrapper -->
