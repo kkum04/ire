@@ -38,6 +38,13 @@
                         <i class="fa fa-bar-chart-o fa-fw"></i>제품
                     </a>
                 </li>
+
+                <li>
+                    <a href="/admin/tech">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>기술현황
+                    </a>
+                </li>
+
                 <li>
                     <a href="/admin/customer/faq">
                         <i class="fa fa-bar-chart-o fa-fw"></i>FAQ
