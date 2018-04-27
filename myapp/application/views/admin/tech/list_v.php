@@ -49,7 +49,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">카테고리</h1>
+                    <h1 class="page-header">기술현황</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -58,7 +58,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            카텍호리 목록
+                            기술현황 목록
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -66,31 +66,33 @@
                                 <thead>
                                     <tr>
                                         <th>순서</th>
-                                        <th>카테고리</th>
+                                        <th>이름</th>
+                                        <th>일련번호</th>
                                         <th>수정</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($categories as $category): ?>
+                                    <?php foreach($teches as $tech): ?>
                                     <tr class="odd gradeX">
                                         <td>
                                             <a class="btn btn-primary"
-                                               href="/admin/category/update_order/<?php echo $category->category_id?>/prev">
+                                               href="/admin/tech/update_order/<?php echo $tech->tech_id?>/prev">
                                                 ▲
                                             </a>
                                             <a class="btn btn-primary"
-                                               href="/admin/category/update_order/<?php echo $category->category_id?>/next">
+                                               href="/admin/tech/update_order/<?php echo $tech->tech_id?>/next">
                                                 ▼
                                             </a>
                                         </td>
-                                        <td><?php echo $category->category_name?></td>
+                                        <td><?php echo $tech->tech_name?></td>
+                                        <td><?php echo $tech->tech_number?></td>
                                         <td>
                                             <a class="btn btn-default"
-                                               href="/admin/category/update_form/<?php echo $category->category_id?>">
+                                               href="/admin/tech/update_form/<?php echo $tech->tech_id?>">
                                                 수정
                                             </a>
-                                            <a class="btn btn-danger btn_delete_category"
-                                                href="/admin/category/delete/<?php echo $category->category_id?>">
+                                            <a class="btn btn-danger btn_delete_tech"
+                                                href="/admin/tech/delete/<?php echo $tech->tech_id?>">
                                                 삭제
                                             </a>
                                         </td>
@@ -100,7 +102,7 @@
                             </table>
 
                             <a class="btn btn-default"
-                               href="/admin/category/create_form">
+                               href="/admin/tech/create_form">
                                 추가
                             </a>
                         </div>
@@ -135,8 +137,8 @@
 
     <script>
         $(function (){
-            $('.btn_delete_category').click(function (){
-                return confirm("카테고리를 삭제 하시겠습니까?");
+            $('.btn_delete_tech').click(function (){
+                return confirm("기술현홍을 삭제하시겠습니까?");
             });
         });
     </script>
