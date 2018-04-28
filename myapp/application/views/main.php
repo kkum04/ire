@@ -56,7 +56,7 @@
                     <ul class="qprod_row">
                         <?php foreach($product_banners as $product_banner):?>
                         <li class="qprod_col">
-                            <a href="#">
+                            <a href="/product/detail/<?=$product_banner->product_id?>">
                                 <div class="qprod_img">
                                     <img src="<?=$product_banner->product_image?>" alt="product_image" />
                                 </div>
