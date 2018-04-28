@@ -46,7 +46,7 @@ class Ire_Controller extends CI_Controller
 
     private function load_sitemap() {
         $data['categories'] = $this->categories;
-        //$this->sitemap = $this->load->view('/include/sitemap_v', $data, TRUE);
+        $this->sitemap = $this->load->view('/include/sitemap_v', $data, TRUE);
     }
 
     /**
