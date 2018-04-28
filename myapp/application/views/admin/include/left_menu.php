@@ -57,7 +57,7 @@
                             <a href="/admin/banner/main">메인배너</a>
                         </li>
                         <li>
-                            <a href="/admin/banner/product">상품배너</a>
+                            <a href="/admin/banner/product">제품배너</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

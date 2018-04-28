@@ -100,7 +100,7 @@ class Main extends Admin
                 $src_banner->order
             );
         } else {
-            $target_banner = $this->Main_m->get_next_main_Banner(
+            $target_banner = $this->Main_m->get_next_main_banner(
                 $src_banner->order
             );
         }
