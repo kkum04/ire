@@ -50,6 +50,18 @@
                         <i class="fa fa-bar-chart-o fa-fw"></i>FAQ
                     </a>
                 </li>
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 배너관리<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="/admin/banner/main">메인배너</a>
+                        </li>
+                        <li>
+                            <a href="/admin/banner/product">상품배너</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
             </ul>
         </div>
     </div>

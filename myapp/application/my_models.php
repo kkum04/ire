@@ -16,6 +16,7 @@
  * @property Category_m               $Category_m
  * @property Tech_m                   $Tech_m
  * @property Faq_m                    $Faq_m
+ * @property Main_m             $Main_m
  *
  *
  */
