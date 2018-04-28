@@ -54,72 +54,19 @@
             <article class="qprod_wrap">
                 <div class="qprod_row_wrap">
                     <ul class="qprod_row">
+                        <?php foreach($product_banners as $product_banner):?>
                         <li class="qprod_col">
                             <a href="#">
                                 <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
+                                    <img src="<?=$product_banner->product_image?>" alt="product_image" />
                                 </div>
                                 <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH1</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
+                                    <p class="qprod_top_txt"><?=$product_banner->category_name?></p>
+                                    <p class="qprod_bottom_txt"><?=$product_banner->product_name.' '.$product_banner->product_type?></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="qprod_col">
-                            <a href="#">
-                                <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
-                                </div>
-                                <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH2</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="qprod_col">
-                            <a href="#">
-                                <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
-                                </div>
-                                <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH3</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="qprod_col">
-                            <a href="#">
-                                <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
-                                </div>
-                                <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH4</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="qprod_col">
-                            <a href="#">
-                                <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
-                                </div>
-                                <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH5</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="qprod_col">
-                            <a href="#">
-                                <div class="qprod_img">
-                                    <img src="/static/images/uploads/qprod_sample.jpg" alt="LSW-111S 회전형 레벨스위치" />
-                                </div>
-                                <div class="qprod_txt">
-                                    <p class="qprod_top_txt">LEVEL SWICTH6</p>
-                                    <p class="qprod_bottom_txt">LSW-111S 회전형 레벨스위치</p>
-                                </div>
-                            </a>
-                        </li>
+                        <?php endforeach;; ?>
                     </ul>
                 </div>
                 <div class="qprod_but prev"></div>
