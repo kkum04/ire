@@ -19,44 +19,31 @@
     <?php echo $this->header ?>
     <figure id="main_visual_wrap">
         <div id="main_visual">
-            <div class="visual_bg visual_01">
-                <div class="container">
-                    <div class="inner_main_txt">
-                        <h2>여러분의<strong> 행복</strong>과 <strong>안전</strong>을 추구하는<br/>
-                            이레스위치가 되겠습니다.</h2>
-                        <p class="txt_2">최고의 설비와 기능으로 최고의 제품을 생산하여<br/>
-                            더 좋은 가격으로 공급하는 이레스위치가 입니다.</p>
-                        <a class="txt_but" href="#">회사소개 바로가기</a>
+            <?php
+            foreach($main_banners as $index => $main_banner):?>
+                <div class="visual_bg visual_0<?=$index?>">
+                    <div class="container">
+                        <div class="inner_main_txt">
+                            <h2><?=nl2br($main_banner->text1)?></h2>
+                            <p class="txt_2"><?=nl2br($main_banner->text2)?></p>
+                            <a class="txt_but" href="<?=$main_banner->link?>"><?=$main_banner->button_text?></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="visual_bg visual_02">
-                <div class="container">
-                    <div class="inner_main_txt">
-                        <h2>여러분의<strong> 행복</strong>과 <strong>안전</strong>을 추구하는<br/>
-                            이레스위치가 되겠습니다.</h2>
-                        <p class="txt_2">최고의 설비와 기능으로 최고의 제품을 생산하여<br/>
-                            더 좋은 가격으로 공급하는 이레스위치가 입니다.</p>
-                        <a class="txt_but" href="#">회사소개 바로가기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="visual_bg visual_03">
-                <div class="container">
-                    <div class="inner_main_txt">
-                        <h2>여러분의<strong> 행복</strong>과 <strong>안전</strong>을 추구하는<br/>
-                            이레스위치가 되겠습니다.</h2>
-                        <p class="txt_2">최고의 설비와 기능으로 최고의 제품을 생산하여<br/>
-                            더 좋은 가격으로 공급하는 이레스위치가 입니다.</p>
-                        <a class="txt_but" href="#">회사소개 바로가기</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach;?>
         </div>
         <div id="visual_but">
-            <button type="button" class="but on">1</button>
-            <button type="button" class="but">2</button>
-            <button type="button" class="but">3</button>
+            <?php
+            foreach($main_banners as $index => $main_banner){
+                if( $index == 0 ) {
+                    echo "<button type='button' class='but on'>1</button>";
+                } else {
+                    echo "<button type='button' class='but'>1</button>";
+                }
+
+            }
+            ?>
+
         </div>
     </figure>
     <section id="qprod">
