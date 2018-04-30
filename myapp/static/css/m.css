@@ -230,6 +230,7 @@
         width: 280px;
         height: 260px;
         float: left;
+        text-align: center;
     }
     .qprod_col>a{
         display: block;
@@ -237,12 +238,11 @@
         box-sizing: border-box;
     }
     .qprod_img{
-        width: 278px;
+        width: 100%;
         height: 202px;
     }
     .qprod_img>img{
-        width: 100%;
-        height: 100%;
+        width: 70%;
     }
     .qprod_txt{
         height: 58px;
