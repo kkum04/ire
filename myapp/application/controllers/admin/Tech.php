@@ -119,7 +119,7 @@ class Tech extends Admin
     }
 
     function upload_tech_image() {
-        $upload_data = $this->_upload_file('upload', IMAGE_DIR, 'jpg|gif|jpeg|png|pdf');
+        $upload_data = $this->_upload_file('upload', IMAGE_DIR, 'jpg|gif|jpeg|png|pdf|dwg');
 
         if ( isset($upload_data['error']) ==  true)
         {
