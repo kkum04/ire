@@ -34,13 +34,13 @@
                         </a>
                         <ul class="sub_nav_dp2 dp2_1">
                             <li>
-                                <a href="#">제품소개</a>
+                                <a href="/category">제품소개</a>
                             </li>
                             <li>
-                                <a href="#">기술현황</a>
+                                <a href="/tech">기술현황</a>
                             </li>
                             <li>
-                                <a href="#">고객지원</a>
+                                <a href="/customer">고객지원</a>
                             </li>
                         </ul>
                     </li>
@@ -50,10 +50,10 @@
                         </a>
                         <ul class="sub_nav_dp2  dp2_2">
                             <li>
-                                <a href="#">인사말</a>
+                                <a href="/company/ceo">인사말</a>
                             </li>
                             <li>
-                                <a href="#">회사연혁</a>
+                                <a href="/company/history">회사연혁</a>
                             </li>
                         </ul>
                     </li>
