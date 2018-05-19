@@ -75,7 +75,7 @@
                                         <dd><?=$tech->tech_number?></dd>
                                     </dl>
                                     <a class="exp_btn" href="#"></a>
-                                    <a class="dl_btn" href="<?=$tech->tech_image?>" target="_blank" download></a>
+                                    <a class="dl_btn" href="<?="/product/download/".basename($tech->tech_image)."/".$tech->tech_name?>" target="_blank" download></a>
                                     <div class="pu expend">
                                         <div class="pu_wrap tech_wrap">
                                             <a class="close_btn" href="#">
