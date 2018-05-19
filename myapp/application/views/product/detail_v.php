@@ -81,14 +81,14 @@
                                 </dl>
                                 <div class="intro_btn">
                                     <?php if($product->description_file): ?>
-                                    <a href="<?=$product->description_file?>" target="_blank" alt="제품설명서">
+                                    <a href="<?="/product/download/".basename($product->description_file)."/".$product->product_name."_제품설명서"?>" target="_blank" alt="제품설명서">
                                         제품설명서
                                     </a>
                                     <?php endif;?>
 
 
                                     <?php if($product->cad_file):?>
-                                    <a href="<?=$product->cad_file?>" target="_blank" alt="외형도">
+                                    <a href="<?="/product/download/".basename($product->cad_file)."/".$product->product_name."_외형도"?>" target="_blank" alt="외형도">
                                         외형도(Auto-CAD)
                                     </a>
                                     <?php endif;?>

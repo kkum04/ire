@@ -10,6 +10,7 @@ class Product extends Ire_Controller
         parent::__construct();
 
         $this->load->library('pagination');
+        $this->load->helper("download_helper");
     }
 
     function index()
@@ -29,5 +30,12 @@ class Product extends Ire_Controller
         $data['product'] = $product;
         $data['cur_category_products'] = $cur_category_products;
         $this->load->view('/product/detail_v', $data);
+    }
+
+    function download($origin_name, $download_name) {
+        $ext = pathinfo($origin_name, PATHINFO_EXTENSION);
+
+        $data = file_get_contents(IMAGE_DIR.$origin_name);
+        force_download ( $download_name.".".$ext, $data );
     }
 }
